@@ -295,7 +295,7 @@ static int synaptics_rmi4_i2c_probe(struct i2c_client *client,
 	struct synaptics_rmi4_device_info *rmi;
 	const struct synaptics_dsx_board_data *platform_data =
 			client->dev.platform_data;
-	struct synaptics_dsx_board_data *p_data;
+	struct synaptics_dsx_board_data *p_data = NULL;
 
 	printk("[Touch] %s START!!!!!!!!!!!!!!\n",__func__);
 #endif
@@ -435,6 +435,7 @@ static int synaptics_rmi4_i2c_probe(struct i2c_client *client,
 error:
 	devm_kfree(&client->dev, p_data);
 #endif
+		
 error_alloc_dsx_board_data:
 	kfree(synaptics_dsx_i2c_device);
 err_alloc_dsx_i2c_device:
